@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 0 0% 100%;
+  }
+
+  body {
+    @apply bg-white text-prcs-black-800 dark:bg-prcs-black-900 dark:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-prcs-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-prcs-red-700 focus:outline-none focus:ring-2 focus:ring-prcs-red-500 focus:ring-offset-2 dark:hover:bg-prcs-red-500;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-prcs-black-200 bg-white px-4 py-2 text-sm font-medium text-prcs-black-700 shadow-sm transition-colors hover:bg-prcs-black-50 focus:outline-none focus:ring-2 focus:ring-prcs-black-500 focus:ring-offset-2 dark:border-prcs-black-600 dark:bg-prcs-black-800 dark:text-white dark:hover:bg-prcs-black-700;
+  }
+  
+  .card {
+    @apply rounded-lg bg-white p-6 shadow-soft transition-shadow hover:shadow-medium dark:bg-prcs-black-800;
+  }
+  
+  .page-container {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-prcs-black-100 dark:bg-prcs-black-700;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-prcs-black-300 dark:bg-prcs-black-600;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-prcs-black-400 dark:bg-prcs-black-500;
+}
+
+/* Chat bubble effect */
+.chat-bubble-user {
+  @apply rounded-t-lg rounded-l-lg bg-prcs-green-500 text-white;
+}
+
+.chat-bubble-user::after {
+  content: "";
+  @apply absolute -bottom-2 right-0 h-4 w-4 bg-prcs-green-500;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+.chat-bubble-ai {
+  @apply rounded-t-lg rounded-r-lg bg-accent-100 text-prcs-black-800 dark:bg-accent-700 dark:text-white;
+}
+
+.chat-bubble-ai::after {
+  content: "";
+  @apply absolute -bottom-2 left-0 h-4 w-4 bg-accent-100 dark:bg-accent-700;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
